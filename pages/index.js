@@ -1,5 +1,6 @@
-import { Head } from 'flareact/document';
 import { Helmet } from 'react-helmet';
+// build-in のHeaderはエラーが多いので、内部で使われているreact-helmetを直接呼び出す
+
 // export function getEdgeProps({ params }) {
 //   const { slug } = params;
 
@@ -18,7 +19,13 @@ export default function Index() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>My Title</title>
-        <link rel="canonical" href="http://mysite.com/example" />
+        {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+        <meta property="og:title" content="PLEASE_REPLACE_TITLE" />
+        <meta property="og:description" content="PLEASE_REPLACE_DESCRIPTION" />
+        <meta
+          property="og:image"
+          content="https://flareact-template.noyan.workers.dev/tree.jpg"
+        />
       </Helmet>
       <div className="flex justify-center items-center h-screen bg-gray-100 w-full">
         <div

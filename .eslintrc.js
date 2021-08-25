@@ -5,10 +5,11 @@ module.exports = {
     node: true,
   },
   extends: [
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     'eslint:recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
-    'plugin:react/recommended',
     'prettier',
   ],
   parserOptions: {
@@ -18,7 +19,8 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['import', 'react', 'react-hooks'],
+  root: true,
   rules: {
     'comma-dangle': ['error', 'always-multiline'],
     'import/order': [
@@ -43,7 +45,14 @@ module.exports = {
       },
     ],
   },
-  globals: {
-    cool_bio_profiles: 'readonly',
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+      },
+    },
+    react: {
+      version: 'detect',
+    },
   },
 };
