@@ -1,3 +1,4 @@
+import { useRouter } from 'flareact/router';
 import { Helmet } from 'react-helmet';
 // build-in のHeaderはエラーが多いので、内部で使われているreact-helmetを直接呼び出す
 
@@ -14,18 +15,28 @@ import { Helmet } from 'react-helmet';
 // }
 
 export default function Index() {
+  const router = useRouter();
+
   return (
     <div>
       <Helmet>
         <meta charSet="utf-8" />
         <title>My Title</title>
-        {/* <link rel="canonical" href="http://mysite.com/example" /> */}
-        <meta property="og:title" content="PLEASE_REPLACE_TITLE" />
+        <meta
+          property="og:title"
+          content="Flareact Demo - React on Edge Worker"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content={`https://flareact-template.noyan.workers.dev${router.asPath}`}
+        />
         <meta property="og:description" content="PLEASE_REPLACE_DESCRIPTION" />
         <meta
           property="og:image"
           content="https://flareact-template.noyan.workers.dev/tree.jpg"
         />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
       <div className="flex justify-center items-center h-screen bg-gray-100 w-full">
         <div
